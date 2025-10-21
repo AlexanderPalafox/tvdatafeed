@@ -157,12 +157,12 @@ class TvDatafeed:
                         volume_data = False
                         row.append(0.0)
                         logger.debug('no volume data')
-
+                row.append(float(xi[4]))
                 data.append(row)
 
             data = pd.DataFrame(
                 data, columns=["datetime", "open",
-                               "high", "low", "close", "volume"]
+                               "high", "low", "close", "volume", "POSIX"]
             ).set_index("datetime")
             data.insert(0, "symbol", value=symbol)
             return data
